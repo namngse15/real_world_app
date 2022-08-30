@@ -5,12 +5,11 @@ import org.springframework.stereotype.Component;
 
 import com.example.real_world_app.entity.User;
 import com.example.real_world_app.model.user.dto.UserDtoReqRegist;
+import com.example.real_world_app.model.user.dto.UserDtoReqUpdate;
 import com.example.real_world_app.model.user.dto.UserDtoRes;
 
 @Component
 public class UserMapper {
-
-
 
     public UserDtoRes to(User user) {
         UserDtoRes userDtoRes = new UserDtoRes();
@@ -21,6 +20,11 @@ public class UserMapper {
     public User to(UserDtoReqRegist userDtoReqRegist) {
         User user = new User();
         BeanUtils.copyProperties(userDtoReqRegist, user);
+        return user;
+    }
+
+    public User to(UserDtoReqUpdate userDtoReqUpdate, User user) {
+        BeanUtils.copyProperties(userDtoReqUpdate, user);
         return user;
     }
 }

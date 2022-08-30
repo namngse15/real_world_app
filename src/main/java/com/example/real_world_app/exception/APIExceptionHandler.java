@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.real_world_app.exception.custom.BadRequestCustomException;
-import com.example.real_world_app.exception.custom.InternalServerCustomeException;
+import com.example.real_world_app.exception.custom.InternalServerCustomException;
+import com.example.real_world_app.exception.custom.NotFoundCustomException;
 import com.example.real_world_app.model.error.CustomError;
 
 @RestControllerAdvice
@@ -20,10 +21,16 @@ public class APIExceptionHandler {
         return ex.getErrors();
     }
 
-    @ExceptionHandler(InternalServerCustomeException.class)
+    @ExceptionHandler(InternalServerCustomException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String,CustomError> internalServerException(InternalServerCustomeException ex) {
+    public Map<String,CustomError> internalServerException(InternalServerCustomException ex) {
         return ex.getErrors();
     }
+
+    @ExceptionHandler(NotFoundCustomException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public Map<String,CustomError> internalServerException(NotFoundCustomException ex) {
+        return ex.getErrors();
+    }    
 
 }
