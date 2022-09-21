@@ -54,7 +54,8 @@ public class ProfileServiceImpl implements ProfileService {
         return res;
     }
 
-    private User getUserLoggedIn() {
+    @Override
+    public User getUserLoggedIn() {
         Object prinicipal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (prinicipal instanceof UserDetails) {
             String email = ((UserDetails) prinicipal).getUsername();

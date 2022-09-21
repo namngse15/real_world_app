@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.example.real_world_app.entity.User;
@@ -15,9 +16,11 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
+@SuppressWarnings (value="unchecked")
 public class JwtTokenUtil {
     
-    private final String secret = "real_world_application";
+    @Value("${JWT_SECRET_KEY}")
+    private String secret;
 
     public String generateToken(User user, Long expiration) {
         Map<String, Object> claims = new HashMap<>();
