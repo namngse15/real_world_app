@@ -16,7 +16,7 @@ import com.example.real_world_app.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/arrticles")
+@RequestMapping("/api/articles")
 @RequiredArgsConstructor
 public class ArticleController {
     
