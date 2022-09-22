@@ -37,6 +37,7 @@ public class ArticleMapper {
     private AuthorDTORes to(User author, boolean isFollowing) {
         AuthorDTORes authorDTORes = new AuthorDTORes();
         BeanUtils.copyProperties(author, authorDTORes);
+        authorDTORes.setFollowing(isFollowing);
         return authorDTORes;
     }
 }
