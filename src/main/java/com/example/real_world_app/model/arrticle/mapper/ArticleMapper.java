@@ -40,4 +40,5 @@ public class ArticleMapper {
         authorDTORes.setFollowing(isFollowing);
         return authorDTORes;
     }
+    
 }
