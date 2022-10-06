@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Repository
 @RequiredArgsConstructor
 public class ArticleCriteria {
-	private final EntityManager em;
+	private final EntityManager entityManager;
 
 	public Map<String, Object> findAll(ArticleDTOFilter filter) {
 		StringBuilder query = new StringBuilder(
@@ -37,8 +37,8 @@ public class ArticleCriteria {
             params.put("favorited", filter.getFavorited());
         }
 
-        TypedQuery<Article> tQuery = em.createQuery(query.toString(), Article.class);
-        Query countQuery = em.createQuery(query.toString().replace("select a", "select count(a.id)"));
+        TypedQuery<Article> tQuery = entityManager.createQuery(query.toString(), Article.class);
+        Query countQuery = entityManager.createQuery(query.toString().replace("select a", "select count(a.id)"));
 
         System.out.println("query: " + query);
         params.forEach((k, v) -> {
